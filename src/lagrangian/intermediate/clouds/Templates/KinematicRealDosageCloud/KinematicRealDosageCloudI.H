@@ -480,7 +480,10 @@ Foam::KinematicRealDosageCloud<CloudType>::vDotSweep() const
         const parcelType& p = iter();
         const label celli = p.cell();
 
-        vDotSweep[celli] += p.nParticle()*p.areaP()*mag(p.U() - U_[celli]);
+        if (p.active() == 1)
+        {
+            vDotSweep[celli] += p.nParticle()*p.areaP()*mag(p.U() - U_[celli]);
+        }
     }
 
     vDotSweep.primitiveFieldRef() /= mesh_.V();
@@ -519,7 +522,10 @@ Foam::KinematicRealDosageCloud<CloudType>::theta() const
         const parcelType& p = iter();
         const label celli = p.cell();
 
-        theta[celli] += p.nParticle()*p.volume();
+        if (p.active() == 1)
+        {
+            theta[celli] += p.nParticle()*p.volume();
+        }
     }
 
     theta.primitiveFieldRef() /= mesh_.V();
@@ -557,7 +563,10 @@ Foam::KinematicRealDosageCloud<CloudType>::alpha() const
         const parcelType& p = iter();
         const label celli = p.cell();
 
-        alpha[celli] += p.nParticle()*p.mass();
+        if (p.active() == 1)
+        {
+            alpha[celli] += p.nParticle()*p.mass();
+        }
     }
 
     alpha /= (mesh_.V()*rho_);
@@ -594,7 +603,10 @@ Foam::KinematicRealDosageCloud<CloudType>::rhoEff() const
         const parcelType& p = iter();
         const label celli = p.cell();
 
-        rhoEff[celli] += p.nParticle()*p.mass();
+        if (p.active() == 1)
+        {
+            rhoEff[celli] += p.nParticle()*p.mass();
+        }
     }
 
     rhoEff /= mesh_.V();
