@@ -1,5 +1,7 @@
 # OpenFOAM-6 with modifications for lung simulations with realistic dosages
 
+[![DOI](https://zenodo.org/badge/861330854.svg)](https://zenodo.org/badge/latestdoi/861330854)
+
 This repository contains a modified version of the OpenFOAM `lagrangian/intermediate` library for running simulations with realistic dosages.
 The main modification to the library is found in commit [`f31fe2f`](https://github.com/jvwilliams23/OpenFOAM-6-RealisticLungDosages/commit/f31fe2ffb74355abb4125b10ada437d7a66cf470). It is a simple if statement, which checks if a particle is active (floating) or inactive (deposited), to avoid deposited particles interfering with the surrounding flow and creating numerical issues.
 
