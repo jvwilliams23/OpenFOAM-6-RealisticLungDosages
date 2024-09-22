@@ -1,0 +1,26 @@
+PARCELS=parcels
+BASEPARCELS=$(PARCELS)/baseClasses
+DERIVEDPARCELS=$(PARCELS)/derived
+
+CLOUDS=clouds
+BASECLOUDS=$(CLOUDS)/baseClasses
+DERIVEDCLOUDS=$(CLOUDS)/derived
+
+/* JW */
+
+$(BASECLOUDS)/kinematicRealDosageCloud/kinematicRealDosageCloud.C
+
+KINEMATICPARCEL=$(DERIVEDPARCELS)/basicKinematicRealDosageParcel
+$(KINEMATICPARCEL)/defineBasicKinematicRealDosageParcel.C
+$(KINEMATICPARCEL)/makeBasicKinematicRealDosageParcelSubmodels.C
+/* JW */
+
+
+/* JK */
+/* hw parcel sub-models */
+KINEMATICMPPICELECTRICPARCEL=$(DERIVEDPARCELS)/basicKinematicMPPICRealDosageParcel
+$(KINEMATICMPPICELECTRICPARCEL)/defineBasicKinematicMPPICRealDosageParcel.C
+$(KINEMATICMPPICELECTRICPARCEL)/makeBasicKinematicMPPICRealDosageParcelSubmodels.C
+/* JK */
+
+LIB = $(FOAM_USER_LIBBIN)/liblagrangianRealDosage
